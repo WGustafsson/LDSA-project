@@ -66,6 +66,9 @@ downloads
 *.csv
 *.h5
 *.gz
+*.parquet
+*.crc
+*_SUCCESS
 
 
 # IDEA
