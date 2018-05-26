@@ -2,10 +2,17 @@ import os
 from pyspark.sql import SparkSession
 
 def setup_spark_config(appName="Exploring Million Song Dataset"):
-    spark = SparkSession \
-    .builder \
-    .appName(appName) \
-    .getOrCreate()
+    if 'ubuntu' in os.path.dirname(os.path.realpath(__file__)):
+        spark = SparkSession \
+        .builder \
+        .master("spark://192.168.1.141:7077") \
+        .appName(appName) \
+        .getOrCreate()
+    else:
+        spark = SparkSession \
+        .builder \
+        .appName(appName) \
+        .getOrCreate()
 
     sc = spark.sparkContext
     return sc, spark
